@@ -11,17 +11,29 @@ import android.app.Activity;
 public class MainActivity extends AppCompatActivity {
 
 
-    Button btn1,btnBorrar,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0,btnSuma,btnIgual;
+    Button btn1,btnBorrar,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0,btnSuma,btnIgual,btnResta;
     EditText edtResul;
     String aux,aux3;
     String operador, reserva;
     String mostrar="";
     int resultado,aux2;
+    boolean bandera = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //programa resta
+        btnResta= findViewById(R.id.btnResta);
+        btnResta.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                reserva = edtResul.getText().toString();
+                operador = "-";
+                edtResul.setText("");
+                bandera=true;
+            }
+        });
 
         //programa suma
         btnSuma= findViewById(R.id.btnSumar);
@@ -31,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                                            reserva = edtResul.getText().toString();
                                            operador = "+";
                                            edtResul.setText("");
+                                           bandera=true;
                                        }
                                    }
 
@@ -44,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                                              edtResul.setText(mostrar);
                                              reserva = "";
                                              operador = "";
+                                             bandera=true;
                                          }
                                      }
 
@@ -55,13 +69,19 @@ public class MainActivity extends AppCompatActivity {
                                         public void onClick(View v) {
                                             mostrar = edtResul.getText().toString();
                                             mostrar = mostrar + "1";
+
                                             if(operador.equals("+")){
                                                 resultado = Integer.parseInt(reserva) + Integer.parseInt (edtResul.getText().toString());
                                                 edtResul.setText(String.valueOf(resultado));
+                                                bandera=false;
+                                            }   if(operador.equals("-")){
+                                                resultado = Integer.parseInt(reserva) - Integer.parseInt(edtResul.getText().toString());
+                                                edtResul.setText(String.valueOf(resultado));
+                                                bandera=false;
                                             }
-
                                         }
                                     }
+
 
         );
         //Programa para insertar "1" a la pantalla de resultado
@@ -70,12 +90,14 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edtResul.getText().toString().compareTo("0")==0){
+                if(edtResul.getText().toString().compareTo("0")==0 ){
                     edtResul.setText("1");
-                }else
-                     mostrar = edtResul.getText().toString();
-                     mostrar = mostrar + "1";
-                     edtResul.setText(mostrar);
+                }else if (bandera==true) {
+                    mostrar = edtResul.getText().toString();
+                    mostrar = mostrar + "1";
+                    edtResul.setText(mostrar);
+                }
+
             }
         });
         //Programa para insertar "2" a la pantalla de resultado
@@ -85,10 +107,12 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(View v) {
                                         if(edtResul.getText().toString().compareTo("0")==0){
                                             edtResul.setText("2");
-                                        }else
+                                        }else if (bandera==true) {
                                             mostrar = edtResul.getText().toString();
-                                        mostrar = mostrar + "2";
-                                        edtResul.setText(mostrar);
+                                            mostrar = mostrar + "2";
+                                            edtResul.setText(mostrar);
+                                        }
+
                                     }
                                 }
 
@@ -100,10 +124,11 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(View v) {
                                         if(edtResul.getText().toString().compareTo("0")==0){
                                             edtResul.setText("3");
-                                        }else
+                                        }else if (bandera==true) {
                                             mostrar = edtResul.getText().toString();
-                                        mostrar = mostrar + "3";
-                                        edtResul.setText(mostrar);
+                                            mostrar = mostrar + "3";
+                                            edtResul.setText(mostrar);
+                                        }
                                     }
                                 }
 
@@ -115,10 +140,11 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(View v) {
                                         if(edtResul.getText().toString().compareTo("0")==0){
                                             edtResul.setText("4");
-                                        }else
+                                        }else if (bandera==true) {
                                             mostrar = edtResul.getText().toString();
-                                        mostrar = mostrar + "4";
-                                        edtResul.setText(mostrar);
+                                            mostrar = mostrar + "4";
+                                            edtResul.setText(mostrar);
+                                        }
                                     }
                                 }
 
@@ -130,10 +156,11 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(View v) {
                                         if(edtResul.getText().toString().compareTo("0")==0){
                                             edtResul.setText("5");
-                                        }else
+                                        }else if (bandera==true) {
                                             mostrar = edtResul.getText().toString();
-                                        mostrar = mostrar + "5";
-                                        edtResul.setText(mostrar);
+                                            mostrar = mostrar + "5";
+                                            edtResul.setText(mostrar);
+                                        }
                                     }
                                 }
 
@@ -145,10 +172,11 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(View v) {
                                         if(edtResul.getText().toString().compareTo("0")==0){
                                             edtResul.setText("6");
-                                        }else
+                                        }else if (bandera==true) {
                                             mostrar = edtResul.getText().toString();
-                                        mostrar = mostrar + "6";
-                                        edtResul.setText(mostrar);
+                                            mostrar = mostrar + "6";
+                                            edtResul.setText(mostrar);
+                                        }
                                     }
                                 }
 
@@ -160,10 +188,11 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(View v) {
                                         if(edtResul.getText().toString().compareTo("0")==0){
                                             edtResul.setText("7");
-                                        }else
+                                        }else if (bandera==true) {
                                             mostrar = edtResul.getText().toString();
-                                        mostrar = mostrar + "7";
-                                        edtResul.setText(mostrar);
+                                            mostrar = mostrar + "7";
+                                            edtResul.setText(mostrar);
+                                        }
                                     }
                                 }
 
@@ -175,10 +204,11 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(View v) {
                                         if(edtResul.getText().toString().compareTo("0")==0){
                                             edtResul.setText("8");
-                                        }else
+                                        }else if (bandera==true) {
                                             mostrar = edtResul.getText().toString();
-                                        mostrar = mostrar + "8";
-                                        edtResul.setText(mostrar);
+                                            mostrar = mostrar + "8";
+                                            edtResul.setText(mostrar);
+                                        }
                                     }
                                 }
 
@@ -190,28 +220,42 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(View v) {
                                         if(edtResul.getText().toString().compareTo("0")==0){
                                             edtResul.setText("9");
-                                        }else
+                                        }else if (bandera==true) {
                                             mostrar = edtResul.getText().toString();
-                                        mostrar = mostrar + "9";
-                                        edtResul.setText(mostrar);
+                                            mostrar = mostrar + "9";
+                                            edtResul.setText(mostrar);
+                                        }
                                     }
                                 }
 
         );
         //Programa para insertar "0" a la pantalla de resultado
         btn0 = findViewById(R.id.btn0);
-        btn0.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                     public void onClick(View v) {
-                                          if(edtResul.getText().toString().compareTo("0")==0){
-                                             edtResul.setText("0");
-                                          }else
-                                             mostrar = edtResul.getText().toString();
-                                             mostrar = mostrar + "0";
-                                             edtResul.setText(mostrar);
-            }
-        });
+        OyenteClick objDetectaClic = new OyenteClick();
+        btn0.setOnClickListener(objDetectaClic);
+        //btn0.setOnClickListener(objDetectaClic);
+
+
+
+
 
     }
+    //Declaración de la clase oyente
+    class OyenteClick implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            if( ((Button) v) ==btn1){
 
-}
+
+            }
+            if(edtResul.getText().toString().compareTo("0")==0){
+                edtResul.setText("0");
+            }else if (bandera==true) {
+                mostrar = edtResul.getText().toString();
+                mostrar = mostrar + ((Button) v);
+                edtResul.setText(mostrar);
+            }
+        }
+    }
+
+}//main activity
